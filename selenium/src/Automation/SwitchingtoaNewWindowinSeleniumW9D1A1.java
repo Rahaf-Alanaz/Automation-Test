@@ -1,53 +1,38 @@
 package Automation;
-
-import java.util.Iterator; 
-import java.util.Set; 
-import org.openqa.selenium.By; 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.Test;
 
-@Test
-
-public class SwitchingtoaNewWindowinSeleniumW9D1A1 { 
-public static void main(String[] args) throws Exception {
-
-
-WebDriver driver = new SafariDriver();
-
-driver.manage().window().maximize();
-
-// Load the website
-driver.get("http://www.naukri.com/");
-
-// It will return the parent window name as a String
-String parent=driver.getWindowHandle();
-
-Set<String>s=driver.getWindowHandles();
-
-// Now iterate using Iterator
-Iterator<String> I1= s.iterator();
-
-while(I1.hasNext())
-{
-
-String child_window=I1.next();
-
-
-if(!parent.equals(child_window))
-{
-driver.switchTo().window(child_window);
-
-System.out.println(driver.switchTo().window(child_window).getTitle());
-
-driver.close();
-}
-
-}
-//switch to the parent window
-driver.switchTo().window(parent);
-
-}
-}
+public class SwitchingtoaNewWindowinSeleniumW9D1A3 {
+	
+public static void main(String[] args) {
+	
+	SafariDriver driver= new SafariDriver();
+	driver.get("https://www.google.com/");
+	
+	driver.findElement(By.cssSelector("body")).sendKeys(Keys.COMMAND+"n");
+	
+	try{
+		
+		Thread.sleep(2000);
+		
+		for(String winHandle:driver.getWindowHandles()) 
+		{
+			
+			driver.switchTo().window(winHandle);
+			
+		}
+		
+		driver.get("https://www.bing.com/");
+		
+		
+	}catch(Exception e) {
+		
+		System.out.println(e );
+		
+	  }	
+	
+    }
+	
+  }
+  
