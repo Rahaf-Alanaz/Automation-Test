@@ -39,11 +39,6 @@ import org.testng.annotations.Test;
 		Thread.sleep(2000);	
 	
 		2R
- */
-
-
-
-
 		/*
       String url = "https://www.tutorialspoint.com/index.htm";
       driver.get(url);
